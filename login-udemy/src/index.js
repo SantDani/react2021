@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import AppUseState from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppUseState />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
