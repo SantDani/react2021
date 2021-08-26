@@ -44,4 +44,31 @@ function App() {
   );
 }
 
-export default App;
+
+function AppUseState(){
+  // tecnica de etma
+
+
+  const [name, setName] = useState("Ricardo");
+  //If not need setter not declare
+  // we can send a atribute, object or array.
+  const [age] = useState([{}]);
+  //I send "Dany" for cnahge value later
+  const [,setSomething] = useState("Dany");
+
+  const handleHeyClick = () => {
+    setName('Toreto');
+    console.log('click');
+  }
+  return(
+    <div>
+      <h1>Hello {name}!!</h1>
+      <h1>My hage is {age}</h1>
+      <button onClick={handleHeyClick}>Change name</button>
+    </div>
+  );
+
+}
+
+// export default App;
+export default AppUseState;
