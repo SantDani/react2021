@@ -1,75 +1,57 @@
-import {useState} from "react";
-import {Component} from "react";
+import { useState, Component } from "react";
 
 
+class App extends Component{
 
-function App() {
+  // props is a good practique
+  constructor(props){
+    super(props);
+    console.log('I am the constructor');
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    /* Is usefull declare constructor  if 
+    we will create variables of state */
 
-  const handleEmailChange = (event) => setEmail(event.target.value);
+    this.state = {
+      name: "",
+    };
 
+  }
+
+  componentDidMount(){
+    console.log('I am the componentDidMount()');
   
-  const handlePsswordChange = ({target:{value}}) => setPassword(value);
-  
+  }
 
-  const handleFormSubmit = (event) =>{
-    event.preventDefault(); 
-    console.log('submit');
-    console.log(email);
-    console.log(password);
-    alert(`Usuerio: ${email}, Password: ${password}`)
-
+  // snapshot value that return getSnapshotBeforeUpdate
+  componentDidUpdate(prevProps, prevState, snapshot){
     
+    console.log('I am the componentDidUpdate()');
   }
-  
-  return (
-    <div className="App">
-      <form onSubmit={handleFormSubmit}>
-      <h2>Log in</h2>
 
-      <label>
-        login
-        <input type="email" value={email} onChange={handleEmailChange}></input>
-      </label>
-      <label>
-        password
-        <input type="password" value={password} onChange={handlePsswordChange}></input>
-      </label>
-
-      <button type="submit"> Enter</button>
-      </form>
-    </div>
-  );
-}
-
-function AppUseState(){
-  // tecnica de etma
-
-
-  const [name, setName] = useState("Ricardo");
-  //If not need setter not declare
-  // we can send a atribute, object or array.
-  const [age] = useState();
-  //I send "Dany" for cnahge value later
-  const [,setSomething] = useState("Dany");
-
-  const handleHeyClick = () => {
-    setName('Toreto');
-    console.log('click');
+  shouldComponentUpdate(){
+    
+    console.log('I am the shouldComponentUpdate()');
+    // return false not render
+    // return true render
+    // It is used for optimitze 
+    return true;
   }
-  return(
-    <div>
-      <h1>Hello {name}!!</h1>
-      <h1>My hage is {age}</h1>
-      <button onClick={handleHeyClick}>Change name</button>
-    </div>
-  );
+
+  getSnapshotBeforeUpdate(prevProps, prevState){
+    console.log('I am the getSnapshotBeforeUpdate()');
+    console.log('prevProps ', prevProps);
+    console.log('prevState ', prevState);
+  }
+
+  render(){
+    return (
+      <div>
+        <h1>React component life cycle</h1>
+        <input value={this.state.name} onChange={({target: {value}}) => this.setState({name: value})}></input>
+      </div>
+    )
+  }
 
 }
 
-// export default App;
-export default AppUseState;
-
-
+export default App;

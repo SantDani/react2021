@@ -7,7 +7,7 @@ import AppUseState from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppUseState />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
