@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import SearchBox from './components/SearchBox/';
 
 import "./style.css"
@@ -6,16 +6,36 @@ import dataUsersJSON from "./../../data/users.json";
 import SearchResults from './components/SearchResults';
 
 export default function Search() {
+    const URL_USERS = "https://jsonplaceholder.typicode.com/users";
     
     const[isAtTop, setIsAtTop] = useState(false);
-    const[userData] = useState(dataUsersJSON);
+    // const[userData] = useState(dataUsersJSON);
+    const[userData, setUserData] = useState(dataUsersJSON);
     const[results, setResults] = useState([]);
     const[auxSearchText, setAuxSearchText] = useState('');
+
+    // Call at mount component
+    useEffect(() => {
+        const getUsers = async () => {
+            window.fetch(URL_USERS)
+            .then(response => response.json())
+            .then(data => {
+                console.log('response APi');
+                // console.log(data);
+
+                setUserData(data);
+            });
+        };
+
+        getUsers().catch(e => console.error(e));
+
+    }, []);
 
     const handleCloseSearch = () => {
         setIsAtTop(false);
         setResults([]);
     }
+
     const handleSearchClick = (searchText) => {
         setAuxSearchText(searchText);
         setIsAtTop(true);
@@ -31,14 +51,14 @@ export default function Search() {
             );
             // console.log(filterData);
             setResults(filterData);
-            console.log(auxSearchText);
+            // console.log(auxSearchText);
         }
     }
     
     
     // console.log(userData);
     // console.log('Results');
-    console.log(results);
+    // console.log(results);
 
     
     return(
