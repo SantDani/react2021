@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router, // Tag main is the container of Routers
   Switch, // Fo change between pages
   Route, // It is a router. It is necessary for one for page
-  Link // It for send to other page. IS a tag link like <a></a>
+  //Link // It for send to other page. IS a tag link like <a></a>
 } from "react-router-dom";
 
 import Home from "./../views/home"

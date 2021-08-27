@@ -3,14 +3,29 @@ import PokemonContext from "../../context/pokemons";
 
 export default function Home(){
 
-    const {showAlert} = useContext(PokemonContext);
+    const {getPokemons, pokemons} = useContext(PokemonContext);
 
-    // console.log(showAlert);
+    // console.log(getPokemons);
     
     // At mount component
     useEffect(() => {
-        showAlert();
+        getPokemons().catch(e => console.error(e));
     }, [])
 
-    return (<div>Home page</div>);
+    console.log(pokemons)
+    return (
+        <div>
+            <div>Home page</div>
+
+            {pokemons?.map((pokemon, index) => {
+                return (
+                    <div key={index}>
+                        <p> Name pokemon : <strong>{pokemon.name}</strong></p>
+                    </div>
+                )
+            })} 
+            
+            
+        </div>
+    );
 }
