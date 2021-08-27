@@ -17,14 +17,10 @@ export default function Search() {
     // Call at mount component
     useEffect(() => {
         const getUsers = async () => {
-            window.fetch(URL_USERS)
-            .then(response => response.json())
-            .then(data => {
-                console.log('response APi');
-                // console.log(data);
+            const response = await window.fetch(URL_USERS);
+            const data = await response.json();
 
-                setUserData(data);
-            });
+            setUserData(data);
         };
 
         getUsers().catch(e => console.error(e));
