@@ -21,7 +21,7 @@ export default function SearchBox( {onSearch, onClose}){
                         className="search-box-input"
                     />
                 </label>
-                <button onClick={onSearch}>Search</button>
+                <button onClick={() => onSearch(searchText)}>Search</button>
                 <button onClick={handleSearchClick}>Close</button>
             </div>
         </div>
