@@ -10,6 +10,13 @@ export default function SearchBox( {onSearch, onClose, isSearching}){
         setSearchText("");
     }
 
+    const handleKeyPressEnter = (event) => {
+
+        if(event.key === 'Enter'){
+            onSearch(searchText);
+        }
+    }
+
     return(
         <div className="search-box">
             <h1 className="search-box-title">Main Search</h1>
@@ -19,6 +26,7 @@ export default function SearchBox( {onSearch, onClose, isSearching}){
                         value={searchText} 
                         onChange={({target: {value}}) => setSearchText(value)}
                         className="search-box-input"
+                        onKeyPress={handleKeyPressEnter}
                     />
                 </label>
                 <button onClick={() => onSearch(searchText)} disabled={!searchText.length}>Search</button>

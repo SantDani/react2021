@@ -1,18 +1,17 @@
-export default function SearchResults({results, isSearching}) {
+import SearchResultsItem from "./searchResultsItem";
+
+export default function SearchResults({results, isSearching, auxSearchText}) {
     return(
         <div style={{
             padding: "0rem 1rem 0rem 1rem",
         }}>
-            {!results?.length && isSearching && <p>No exists reults</p>}
+            {!results?.length && isSearching && <p>No exists results "{auxSearchText}"</p>}
             <h2>Search Results</h2>
-            {results?.map((value, index) => {
-                return (
-                    <div key={value.id} style={{backgroundColor: "white", margin: "0.3rem 0 0.3rem 0"}}>
-                        <p>{value.name}</p>
-                        <p>{value.email}</p>
-                    </div>
-                )
-            })}
+            {results?.map((user, index) => 
+                // <SearchResultsItem key={value.id} name={value.name} email={value.email}/>
+                // ...value sends the object with his attributes
+                <SearchResultsItem key={user.id} {...user} />
+            )}
         </div>
     );
 }

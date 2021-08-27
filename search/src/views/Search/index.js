@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import SearchBox from './components/SearchBox/SearchBox';
+import SearchBox from './components/SearchBox/';
 
 import "./style.css"
 import dataUsersJSON from "./../../data/users.json";
@@ -10,12 +10,14 @@ export default function Search() {
     const[isAtTop, setIsAtTop] = useState(false);
     const[userData] = useState(dataUsersJSON);
     const[results, setResults] = useState([]);
+    const[auxSearchText, setAuxSearchText] = useState('');
 
     const handleCloseSearch = () => {
         setIsAtTop(false);
         setResults([]);
     }
-    const handleSeachClick = (searchText) => {
+    const handleSearchClick = (searchText) => {
+        setAuxSearchText(searchText);
         setIsAtTop(true);
         if(userData?.length){
             const searchTextMinus = searchText.toLocaleLowerCase();
@@ -29,6 +31,7 @@ export default function Search() {
             );
             // console.log(filterData);
             setResults(filterData);
+            console.log(auxSearchText);
         }
     }
     
@@ -41,11 +44,12 @@ export default function Search() {
     return(
         <div className={`search ${isAtTop ? "search---Top" : "search--center"} `}>
             <SearchBox 
-            onSearch={handleSeachClick} 
+            onSearch={handleSearchClick} 
             onClose={handleCloseSearch}
             isSearching={isAtTop}/>
             <SearchResults 
-            results={results} 
+            results={results}
+            auxSearchText={auxSearchText}
             isSearching={isAtTop}/>
         </div>
     )
