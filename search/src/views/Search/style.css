@@ -6,7 +6,18 @@
     
     display: flex;
     
-    justify-content: center;
+    /* justify-content: center; */
+    /* justify-items: center; */
+    /* align-items: center; */
+}
+
+.search--center{
+    justify-content: center; 
     justify-items: center;
     align-items: center;
+}
+
+.search--top{
+    justify-content: center;
+    align-items: flex-start;
 }
