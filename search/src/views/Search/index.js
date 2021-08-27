@@ -2,28 +2,46 @@ import {useEffect, useState} from 'react';
 import SearchBox from './components/SearchBox/';
 
 import "./style.css"
-import dataUsersJSON from "./../../data/users.json";
+// import dataUsersJSON from "./../../data/users.json";
 import SearchResults from './components/SearchResults';
+
+// AXIOS
+import axios from "axios";
+
 
 export default function Search() {
     const URL_USERS = "https://jsonplaceholder.typicode.com/users";
     
     const[isAtTop, setIsAtTop] = useState(false);
     // const[userData] = useState(dataUsersJSON);
-    const[userData, setUserData] = useState(dataUsersJSON);
+    const[userData, setUserData] = useState();
     const[results, setResults] = useState([]);
     const[auxSearchText, setAuxSearchText] = useState('');
 
     // Call at mount component
     useEffect(() => {
-        const getUsers = async () => {
+        const getUsersFetch = async () => {
             const response = await window.fetch(URL_USERS);
             const data = await response.json();
 
             setUserData(data);
         };
 
-        getUsers().catch(e => console.error(e));
+        const getUsersAxios = async () => {
+            try {
+                const response = await axios.get(URL_USERS);
+                // console.log(response);
+
+                setUserData(response.data);
+            } catch (error) {
+                console.log(error);   
+            }
+        };
+
+        // getUsersFetch().catch(e => console.error(e));
+        getUsersAxios().catch(e => console.error(e));
+
+
 
     }, []);
 
