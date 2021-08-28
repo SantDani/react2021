@@ -4,6 +4,7 @@ import PokemonList from "./PokemonList";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import usePokemonStore from "../../zustand/stores/pokemon-store";
+import shallow from "zustand/shallow"
 export default function Home(){
 
     // const {getPokemons, pokemons, isLoading , hasError, errorMessage} = useContext(PokemonContext);
@@ -14,7 +15,7 @@ export default function Home(){
         isLoading: state.isLoading, 
         hasError: state.hasError,
         errorMessage: state.errorMessage
-    }));
+    }), shallow);
     
     // At mount component
     useEffect(() => {
