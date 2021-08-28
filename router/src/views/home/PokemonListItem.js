@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-export default function PokemonListItem({name, url}){
+export default function PokemonListItem({name, url}, key){
 
     const getId = () => {
         console.log(url.split("/")[6]);
@@ -8,12 +8,13 @@ export default function PokemonListItem({name, url}){
     }
     
     return(
-        <>
-            <h3>Item</h3>
+        <div key={key}>
+            {/* <h3>Item</h3> */}
+            
             <p> Name pokemon : <strong>{name}</strong></p>
             <button >
                 <Link to={`/pokemon/${getId()}`}>Ver details</Link>
             </button>
-        </>
+        </div>
     )
 }

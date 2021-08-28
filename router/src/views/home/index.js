@@ -1,12 +1,11 @@
 import {useContext, useEffect} from "react"
 import PokemonContext from "../../context/pokemons";
 import PokemonList from "./PokemonList";
+import Loading from "../../components/Loading";
 
 export default function Home(){
 
     const {getPokemons, pokemons, isLoading} = useContext(PokemonContext);
-
-    // console.log(getPokemons);
     
     // At mount component
     useEffect(() => {
@@ -16,7 +15,7 @@ export default function Home(){
     console.log(pokemons);
 
     if (isLoading) {
-        return(<h3>Loading results...</h3>)
+        return <Loading title="Loading list pokemons..."/>
     }
     return (
         <div>
