@@ -1,5 +1,6 @@
 import {useContext, useEffect} from "react"
 import PokemonContext from "../../context/pokemons";
+import PokemonList from "./PokemonList";
 
 export default function Home(){
 
@@ -16,16 +17,7 @@ export default function Home(){
     return (
         <div>
             <div>Home page</div>
-
-            {pokemons?.map((pokemon, index) => {
-                return (
-                    <div key={index}>
-                        <p> Name pokemon : <strong>{pokemon.name}</strong></p>
-                    </div>
-                )
-            })} 
-            
-            
+            <PokemonList pokemons={pokemons}/>
         </div>
     );
 }

@@ -4,7 +4,7 @@ import PokemonContext from ".";
 import apiCall from "../../api";
 export default function PokemonProvider({children}) {
     // const URL_API = 'https://pokeapi.co/api/v2/pokemon/ditto';
-    const URL_API = 'https://pokeapi.co/api/v2/pokemon?limit=100&offset=200';
+    const URL_API = 'https://pokeapi.co/api/v2/pokemon?limit=100&offset=0';
 
     const [pokemons, setPokemons] = useState([]);
 

@@ -8,6 +8,8 @@ import {
 
 import Home from "./../views/home"
 import PageNotFound from "../views/404";
+import PokeDetail from "../views/PokeDetail";
+
 
 export default function Routes(){
 
@@ -19,6 +21,9 @@ export default function Routes(){
             <Switch>
                 <Route path="/" exact> 
                     <Home/>
+                </Route>
+                <Route path="/pokemon/:id">
+                    <PokeDetail/>
                 </Route>
                 <Route>
                     <PageNotFound></PageNotFound>
