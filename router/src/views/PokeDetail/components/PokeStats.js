@@ -1,16 +1,12 @@
-export default function PokeStats({stats}){
+export default function PokeStats({stat, base_stat}){
 
-    console.log('log - len stat' , stats);
+    console.log('log - stats' , stat, base_stat);
     return(
         <>
-            <h3>Skills</h3>
-            {stats?.map(({stat, base_stat}, index) => (
-                <div>
-                    <p>
-                        {stat.name} :  {base_stat} %
-                    </p>
-                </div>
-            ))}
+           <p>
+                {/* {stat} :  {base_stat} % */}
+                {stat?.name} : {base_stat}  u
+            </p>
         </>
     );
 }

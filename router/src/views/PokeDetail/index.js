@@ -1,6 +1,7 @@
 import React, { useEffect, useContext} from "react";
- import {useParams} from "react-router-dom";
- import PokemonContext from "../../context/pokemons";
+import {useParams} from "react-router-dom";
+import Loading from "../../components/Loading";
+import PokemonContext from "../../context/pokemons";
 import PokeStats from "./components/PokeStats";
 
 
@@ -15,18 +16,22 @@ export default function PokeDetail(){
 
     useEffect(() => {
         getPokemonDetail(id).catch(e => console.error(e));
-        console.log('log - ', pokemonDetail);
+        console.log('log - pokemonDetail ', pokemonDetail);
+        console.log('log - pokemonDetail ', pokemonDetail.stats);
     }, []);
 
     if(isLoading){
-        return( <h3> Loading pokemon..</h3>)
+        return <Loading title="Loading Pokemon..."/>
     }
+    
     return (
         <div>
             <h1>Poke Detail {pokemonDetail?.name}</h1>
             <p>Weight {pokemonDetail?.weight}</p>
-            <p>Weight {pokemonDetail?.height}</p>
-            <PokeStats stats={pokemonDetail?.stats ?? []}/>
+            <p>Height {pokemonDetail?.height}</p>
+            {/* <PokeStats  stats={pokemonDetail?.stats ?? []}/> */}
+            <h3>Skills</h3>
+            {pokemonDetail?.stats?.map((stats, index) => <PokeStats key={index} {...stats}/>)}
         </div>
     )
 }
