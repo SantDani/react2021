@@ -4,7 +4,7 @@ import PokemonList from "./PokemonList";
 
 export default function Home(){
 
-    const {getPokemons, pokemons} = useContext(PokemonContext);
+    const {getPokemons, pokemons, isLoading} = useContext(PokemonContext);
 
     // console.log(getPokemons);
     
@@ -13,7 +13,11 @@ export default function Home(){
         getPokemons().catch(e => console.error(e));
     }, [])
 
-    console.log(pokemons)
+    console.log(pokemons);
+
+    if (isLoading) {
+        return(<h3>Loading results...</h3>)
+    }
     return (
         <div>
             <div>Home page</div>
