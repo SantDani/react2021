@@ -8,16 +8,20 @@ export default function PokemonProvider({children}) {
 
     const [pokemons, setPokemons] = useState([]);
     const [pokemonDetail, setPokemonDetail] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     const getPokemons = async () => {
 
         try {
+            setIsLoading(true);
             const pokemonResult = await apiCall({url: `${URL_API}pokemon?limit=100&offset=0`});
             // console.log('result apiCall',  pokemonResult);
             setPokemons(pokemonResult.results);
         } catch (e) {
             console.error(e);
             setPokemons([]);
+        }finally{
+            setIsLoading(false);
         }
 
     }
@@ -27,15 +31,19 @@ export default function PokemonProvider({children}) {
         if (!id) Promise.reject("ID is necessary");
 
         try {
-            console.log('log - id to call API ', id);
+            setIsLoading(true);
+            // console.log('log - id to call API ', id);
             const pokemonResult = await apiCall({url: `${URL_API}pokemon/${id}`});
-            console.log('log pokemonResult', pokemonResult);
+            // console.log('log pokemonResult', pokemonResult);
             setPokemonDetail(pokemonResult);
+            
             
         } catch (e) {
             setPokemonDetail({});
             console.error(e);
             
+        }finally{
+            setIsLoading(false);
         }
     }
 
@@ -43,7 +51,8 @@ export default function PokemonProvider({children}) {
         <PokemonContext.Provider 
             value={{ 
                 getPokemons, pokemons,
-                getPokemonDetail, pokemonDetail
+                getPokemonDetail, pokemonDetail,
+                isLoading
                 }}>
             {children}
         </PokemonContext.Provider>

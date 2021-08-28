@@ -5,7 +5,8 @@ import React, { useEffect, useContext} from "react";
 
 export default function PokeDetail(){
     let {id} = useParams();
-    const {getPokemonDetail, pokemonDetail} = useContext(PokemonContext);
+    const {getPokemonDetail, pokemonDetail, isLoading} = useContext(PokemonContext);
+    // const { isLoading} = useContext(PokemonContext);
 
     /**Every time that load page 
      *  - Get detail pokemon from his ID
@@ -13,13 +14,16 @@ export default function PokeDetail(){
 
     useEffect(() => {
         getPokemonDetail(id).catch(e => console.error(e));
+    }, []);
 
-        // console.log('log - in Poke detail', pokemonDetail);
-    }, [])
+    if(isLoading){
+        return( <h3> Loading pokemon..</h3>)
+    }
     return (
         <div>
-            <h2>Poke Detail {id}</h2>
-            {pokemonDetail.name}
+            <h1>Poke Detail {pokemonDetail?.name}</h1>
+            <p>Weight {pokemonDetail?.weight}</p>
+            <p>Weight {pokemonDetail?.height}</p>
         </div>
     )
 }
