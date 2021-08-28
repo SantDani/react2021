@@ -19,7 +19,7 @@ export default function PokemonProvider({children}) {
             setErrorMessage("");
             setHasError(false);
 
-            throw new Error("Throw My error");
+            // throw new Error("Throw My error");
             
             const pokemonResult = await apiCall({url: `${URL_API}pokemon?limit=100&offset=0`});
             // console.log('result apiCall',  pokemonResult);

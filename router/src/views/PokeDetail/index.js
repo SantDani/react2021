@@ -2,13 +2,21 @@ import React, { useEffect, useContext} from "react";
 import {useParams} from "react-router-dom";
 import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
-import PokemonContext from "../../context/pokemons";
+// import PokemonContext from "../../context/pokemons";
+import usePokemonStore from "../../zustand/stores/pokemon-store";
 import PokeStats from "./components/PokeStats";
 
 
 export default function PokeDetail(){
     let {id} = useParams();
-    const {getPokemonDetail, pokemonDetail, isLoading, hasError, errorMessage} = useContext(PokemonContext);
+    // const {getPokemonDetail, pokemonDetail, isLoading, hasError, errorMessage} = useContext(PokemonContext);
+    const {getPokemonDetail, pokemonDetail, isLoading, hasError, errorMessage} = usePokemonStore(state => ({
+        getPokemonDetail: state.getPokemonDetail,
+        pokemonDetail: state.pokemonDetail,
+        isLoading: state.isLoading,
+        hasError: state.hasError,
+        errorMessage: state.errorMessage
+    }))
     // const { isLoading} = useContext(PokemonContext);
 
     /**Every time that load page 
