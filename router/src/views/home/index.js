@@ -13,7 +13,7 @@ export default function Home(){
         getPokemons().catch(e => console.error(e));
     }, [])
 
-    console.log(pokemons);
+    // console.log(pokemons);
 
     if (isLoading) {
         return <Loading title="Loading list pokemons..."/>

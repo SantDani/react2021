@@ -36,6 +36,7 @@ export default function PokemonProvider({children}) {
 
     }
 
+
     const getPokemonDetail = async (id) =>{
 
         if (!id) Promise.reject("ID is necessary");
@@ -49,7 +50,7 @@ export default function PokemonProvider({children}) {
 
             // console.log('log - id to call API ', id);
             const pokemonResult = await apiCall({url: `${URL_API}pokemon/${id}`});
-            // console.log('log pokemonResult', pokemonResult);
+            console.log('log pokemonResult', pokemonResult);
             setPokemonDetail(pokemonResult);
             
             

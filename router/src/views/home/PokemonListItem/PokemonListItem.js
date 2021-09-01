@@ -4,7 +4,7 @@ import './style.css';
 export default function PokemonListItem({name, url}, key){
 
     const getId = () => {
-        console.log(url.split("/")[6]);
+        // console.log(url.split("/")[6]);
         return url.split("/")[6];
     }
     

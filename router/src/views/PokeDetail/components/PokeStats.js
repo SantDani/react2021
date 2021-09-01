@@ -1,6 +1,6 @@
 export default function PokeStats({stat, base_stat}){
 
-    console.log('log - stats' , stat, base_stat);
+    // console.log('log - stats' , stat, base_stat);
     return(
         <>
            <p>

@@ -18,7 +18,7 @@ export default function PokeDetail(){
     useEffect(() => {
         getPokemonDetail(id).catch(e => console.error(e));
         // console.log('log - pokemonDetail ', pokemonDetail);
-        // console.log('log - pokemonDetail ', pokemonDetail.stats);
+        // console.log('log - pokemonDetail ', pokemonDetail?.sprites.other.dream_world.front_default);
     }, []);
 
     if(isLoading){
@@ -32,6 +32,9 @@ export default function PokeDetail(){
                     <h1>Poke Detail {pokemonDetail?.name}</h1>
                     <p>Weight {pokemonDetail?.weight}</p>
                     <p>Height {pokemonDetail?.height}</p>
+                    <img
+                        src={pokemonDetail?.sprites.other.dream_world.front_default}
+                    />
                     {/* <PokeStats  stats={pokemonDetail?.stats ?? []}/> */}
                     <h3>Skills</h3>
                     {pokemonDetail?.stats?.map((stats, index) => <PokeStats key={index} {...stats}/>)}
