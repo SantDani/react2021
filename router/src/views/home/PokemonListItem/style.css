@@ -1,0 +1,38 @@
+.item{
+    /* background-color: lightcoral; */
+    display: grid;
+    grid-template-columns: auto auto;
+    /* background-color: lightsalmon; */
+}
+
+.figure{
+    /* width: 2rem; */
+    width: 4rem;
+    height: 100%;
+
+    /* background-color: lime; */
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+    
+}
+
+.item--text{
+    display: grid;
+    align-items: center;
+    justify-content: start;
+    align-content: center;
+    /* background-color: lime; */
+}
+
+
+
+.img-circular{
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+}
