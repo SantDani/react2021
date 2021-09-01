@@ -20,6 +20,9 @@ export default function Home(){
     }
     return (
         <>
+            <head>
+                <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+            </head>
             {hasError ? <ErrorMessage message={"Delete or comment Throw error from provider. It is a simulate error"}/> : <PokemonList pokemons={pokemons}/>}
         </>
     );
